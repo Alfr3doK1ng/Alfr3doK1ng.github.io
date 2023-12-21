@@ -24,18 +24,18 @@ projects:
   limit: 9
   exclude:
     archived: false
-    forks: true
-    projects:
+    forks: false
+    projects: Alfr3doK1ng.github.io
     # - repo-name
 
-# social_media:
+social_media:
   # behance: your_username
   # dribbble: your_username
   # facebook: your_username
   # hackerrank: your_username
-  # instagram: your_username
+  instagram: _alfredoking
   # keybase: your_username
-  # linkedin: your_username
+  linkedin: alfred-long
   # mastodon: your_username
   # medium: your_username
   # stackoverflow: your_user_id
@@ -43,8 +43,9 @@ projects:
   # twitter: your_username
   # unsplash: your_username
   # vk: your_username
-  # website: http://your_website_url
+  website: https://alfr3dok1ng.github.io/
   # youtube: your_username
+  leetcode: yohanlong
 
 topics:
   - name: CSS
