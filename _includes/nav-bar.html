@@ -1,46 +1,61 @@
-<!-- <nav>
-    <ul>
-      <li>
-        <a href="/">Home</a>
-        <a href="/resume">Resume</a>
-      </li>
-    </ul>
-  </nav>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-  <style>
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-    nav ul li {
-      margin-right: 10px;
-    }
-    nav ul li a {
-      color: #000;
-    }
-  </style> -->
-  <style>
+    /* Basic styling for the navigation bar */
     .navbar {
         overflow: hidden;
-        background-color: #FAFBFC;
+        background-color: #333; /* Dark grey background */
+        font-family: 'Roboto', sans-serif; /* Custom Font */
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); /* Subtle Shadow */
     }
 
+    /* Style the links inside the navigation bar */
     .navbar a {
         float: left;
         display: block;
-        color: black;
+        color: white; /* White text */
         text-align: center;
-        padding: 14px 20px;
+        padding: 14px 16px;
         text-decoration: none;
+        position: relative; /* Positioning for the underline */
+        transition: color 0.3s; /* Smooth color transition */
     }
 
-    .navbar a:hover {
-        background-color: #ddd;
+    /* Underline effect on hover */
+    .navbar a:hover::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(1);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white; /* Underline color */
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    /* Initial state of underline */
+    .navbar a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white; /* Underline color */
+        transform-origin: bottom left;
+        transition: transform 0.25s ease-out;
+    }
+
+    /* Active/current link */
+    .navbar a.active {
+        background-color: #f1f1f1; /* Light grey for active link */
         color: black;
     }
 </style>
-
 <div class="navbar">
-    <a href="/">Home</a>
+    <a class="active" href="/">Home</a>
     <a href="/resume">Resume</a>
 </div>
