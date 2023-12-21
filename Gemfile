@@ -4,4 +4,4 @@ gem "jekyll-github-metadata"
 gem "jekyll-octicons"
 gem "jemoji"
 gem "webrick"
-gem 'dotenv'
+gem "dotenv"
