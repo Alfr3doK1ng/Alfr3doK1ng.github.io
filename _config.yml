@@ -25,7 +25,7 @@ projects:
   exclude:
     archived: false
     forks: false
-    projects: Alfr3doK1ng.github.io
+    # projects: 
     # - repo-name
 
 social_media:
