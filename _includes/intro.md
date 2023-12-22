@@ -1,0 +1,10 @@
+## Hello!
+As a computer science major at the University of Wisconsin-Madison, I have a passion for solving real-world problems and creating value for users with my **software engineering** and **quant trading**. I am currently pursuing two concurrent roles that allow me to apply and enhance these skills in different domains and contexts.
+
+In my role as a software engineer intern at **Expedia Group**, I work on the front-end and back-end development of a marketing tool, where I used **React**, **TypeScript**, **GraphQL**, and **MongoDB** to design a synchronous UI tool that facilitated real-time creation and preview of market-feed cards for the **Vrbo** homepage, attracting 400,000+ views and 45,000 clicks with a CTR of 11.25%.
+
+I've also had some experiences in quant trading. My first acquaintance with quant trading was working as a **quantitative researcher intern** at [Bopu Assets](https://www.bopufund.com/en/home). There I reseached on level-2 limit order book data and created 15+ useful factors in forecasting Chinese stocks' future return. I used multi-processing to streamline the computation by 20x and built a trading strategy that had sharpe ratio of 2.
+
+As the current president at [Cardinal Trading Group](https://cardinaltradinguw.com/), I led the market research and trading team, where I developed and backtested a [sentiment-based trading strategy](https://github.com/Cardinal-Trading-UW-Madison/EDA/tree/main/CardinalTradingSystem) that generated a 30% annual return, using Google NLP API and EODHD Sentiment API to analyze news data for SP500 stocks. I also conduct weekly quant interview prep workshops to empower club members for future career development.
+
+My goal is to pursue a career in software engineering, data science, or quant, where I can leverage my skills and expertise to contribute to the innovation and growth of the industry. I am actively looking for intern positions that offer me the opportunity to work on challenging and impactful projects, learn from experienced mentors, and expand my network. I am eager to hear from you and discuss how I can add value to your organization.
