@@ -52,3 +52,31 @@
 .min-height-full {
   min-height: 100vh;
 }
+
+.fade-in-wrapper {
+  animation: fadeInEffect 0.5s ease-in-out forwards;
+  opacity: 0; /* Start with the div being transparent */
+}
+
+.component1, .component2, .component3 {
+  animation: fadeInEffect 0.2s ease-in-out forwards;
+  opacity: 0; /* Start with the components being transparent */
+}
+
+.component1 {
+  animation-delay: 0s; /* Delays the start of the animation */
+}
+
+.component2 {
+  animation-delay: 0.2s; /* Delays the animation start more than the first */
+}
+
+.component3 {
+  animation-delay: 0.4s; /* Delays the animation start more than the second */
+}
+
+
+@keyframes fadeInEffect {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
