@@ -48,12 +48,37 @@ social_media:
   leetcode: yohanlong
 
 topics:
-  - name: CSS
-    web_url: https://github.com/topics/css
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/css/css.png
+  - name: Raft
+    web_url: https://raft.github.io/
+    image_url: https://raft.github.io/logo/solo.svg
 
-  - name: Web design
+  - name: Apache Kafka
+    web_url: https://kafka.apache.org/
+    image_url: https://kafka.apache.org/logos/kafka_logo--simple.png
+  
+  - name: gRPC
+    web_url: https://grpc.io/
+    image_url: https://grpc.io/img/logos/grpc-icon-color.png
 
-  - name: Sass
-    web_url: https://github.com/topics/sass
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/sass/sass.png
+courses:
+  - name: CS537
+    web_url: https://pages.cs.wisc.edu/~oliphant/cs537-fall23/
+    image_url: https://assets.lulu.com/cover_thumbs/1/5/15gjeeky-front-shortedge-384.jpg
+    description: Opertaing Systems
+    comment: |
+      Overall, the course is very challenging. The average weekly workload is around 30 hours. It covers three basic topics in 
+      operating systems: <strong>Virtualization</strong>, <strong>Concurrency</strong>, and <strong>Persistence</strong>. 
+      The textbook, <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">OSTEP</a>, is one of the best-written textbooks 
+      I've read. The author of OSTEP, unsurprisingly, is Remzi, another professor at UW. We are fortunate to have him as the designer 
+      of the introductory course on Operating Systems. Learning OS is indeed challenging, but once you complete it, you'll feel such a 
+      great sense of achievement that it will be unforgettable.
+  - name: CS564
+    web_url: https://pages.cs.wisc.edu/~anhai/courses/564-anhai/
+    image_url: https://m.media-amazon.com/images/I/51EfGOnxycL._SX342_SY445_.jpg
+    description: Database Management Systems
+    comment: This is a pretty chill course that covers the basics of designing and implementing a DBMS (Database Management System).
+      <strong>Relational Algebra</strong> is all you need to know. The projects are quite interesting and require a thorough understanding of every 
+      detail. You will build the entire system from scratch in <strong>C++</strong>. Interestingly, the instructors seem to assume that everyone 
+      already has some understanding of the language. So, be prepared if you're not familiar with it. The exams are straightforward, 
+      covering what's been discussed in lectures and on slides. The weekly workload is usually less than 10 hours, even though it's a 
+      4-credit course.

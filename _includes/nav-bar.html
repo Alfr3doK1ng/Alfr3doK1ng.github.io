@@ -1,5 +1,5 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Great+Vibes&display=swap');
 
     /* Basic styling for the navigation bar */
     .navbar {
@@ -9,8 +9,17 @@
         box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); /* Subtle Shadow */
     }
 
+    /* Style for the unique calligraphy text */
+    .calligraphy {
+        float: left;
+        color: #f1c40f; /* Gold color for distinctiveness */
+        font-family: 'Bebas Neue', cursive; /* Calligraphy font */
+        padding: 10.5px 14px 0px 14px;
+        font-size: 20px; /* Slightly larger font size */
+    }
+
     /* Style the links inside the navigation bar */
-    .navbar a {
+    .navbar a.item {
         float: left;
         display: block;
         color: white; /* White text */
@@ -22,7 +31,7 @@
     }
 
     /* Underline effect on hover */
-    .navbar a:hover::after {
+    .navbar a.item:hover::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -36,7 +45,7 @@
     }
 
     /* Initial state of underline */
-    .navbar a::after {
+    .navbar a.item::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -55,7 +64,29 @@
         color: black;
     }
 </style>
+
 <div class="navbar">
-    <a class="active" href="/">Home</a>
-    <a href="/resume">Resume</a>
+    <a class="calligraphy" href="/">Alf3doK1ng</a>
+    <a class="item" href="/">Home</a>
+    <a class="item" href="/resume">Resume</a>
+    <a class="item" href="/courses">Courses</a>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var navItems = document.querySelectorAll('.navbar .item');
+        var path = window.location.pathname;
+        if (path !== '/' && path.endsWith('/')) {
+        // Remove the last character (slash) from the path
+            path = path.slice(0, -1);
+        }
+
+
+        navItems.forEach(item => {
+
+            if (item.getAttribute('href') === path) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>

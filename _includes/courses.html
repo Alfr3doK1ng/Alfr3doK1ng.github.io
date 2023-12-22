@@ -1,0 +1,9 @@
+<h2 {% if site.style == 'dark' %}class="text-white"{% endif %}>My Courses</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Courses I've taken at UW-Madison.</p>
+<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+  {% for course in site.courses limit: 6 %}
+    <div class="col-12 mb-3">
+      {% include course-card.html %}
+    </div>
+  {% endfor %}
+</div>
