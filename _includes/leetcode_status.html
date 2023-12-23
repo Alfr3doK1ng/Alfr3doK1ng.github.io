@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Progress</title>
+    <style>
+        .leetcode-status-bar {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .leetcode-status-bar .level {
+            display: inline; /* Keeping inline display */
+            margin: 0 12px;
+        }
+
+        .leetcode-status-bar .number {
+            font-weight: bold;
+        }
+
+        .easy {
+            color: #2ecc71;
+        }
+
+        .medium {
+            color: #f1c40f;
+        }
+
+        .hard {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="leetcode-status-bar">
+    <span class="level easy">
+        <span class="number" id="easy-count">--</span> Easy
+    </span>
+    |
+    <span class="level medium">
+        <span class="number" id="medium-count">--</span> Medium
+    </span>
+    |
+    <span class="level hard">
+        <span class="number" id="hard-count">--</span> Hard
+    </span>
+</div>
+
+<script>
+    fetch('/leetcode_data.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('easy-count').textContent = data.easy;
+            document.getElementById('medium-count').textContent = data.medium;
+            document.getElementById('hard-count').textContent = data.hard;
+        })
+        .catch(error => {
+            console.error('Error loading LeetCode data:', error);
+            // Optionally handle the error, e.g., show a message to the user
+        });
+</script>
+
+</body>
+</html>
