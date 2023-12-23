@@ -1,4 +1,4 @@
-name: get_leetCode_data
+name: get_leetcode_data
 
 on:
   schedule:
