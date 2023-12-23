@@ -30,5 +30,5 @@ jobs:
         git config --global user.email "hlong25@wisc.edu"
         git config --global user.name "Alfr3doK1ng"
         git add leetcode_data.json
-        git commit -m "Update leetcode_data.json"
+        git diff --staged --exit-code || git commit -m "Update leetcode_data.json"
         git push
