@@ -24,3 +24,11 @@ jobs:
 
     - name: Run script
       run: python3 leetcode_status.py yohanlong # Replace with your script name
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.email "hlong25@wisc.edu"
+        git config --global user.name "Alfr3doK1ng"
+        git add leetcode_data.json
+        git commit -m "Update leetcode_data.json"
+        git push
