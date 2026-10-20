@@ -1,3 +1,776 @@
----
-layout: home
----
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hanzhe “Alfred” Long — Engineer</title>
+  <meta name="description" content="Hanzhe “Alfred” Long builds the software behind AI that directs: AI video at OpenArt, work agents at Moveworks, co-founder of Vizzy Labs, recovering quant.">
+  <meta name="theme-color" content="#0b0a08">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://www.alfredcodes.icu/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.alfredcodes.icu/">
+  <meta property="og:title" content="Hanzhe “Alfred” Long — Director’s Cut">
+  <meta property="og:description" content="Engineer at OpenArt. Previously agents at Moveworks, co-founder of Vizzy Labs, recovering quant.">
+  <meta property="og:image" content="https://www.alfredcodes.icu/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script>
+    document.documentElement.classList.replace('no-js', 'js');
+    try { if (sessionStorage.getItem('al:leader')) document.documentElement.classList.add('seen-leader'); } catch (e) {}
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('reduced');
+    setTimeout(function () { if (!document.documentElement.classList.contains('is-ready')) document.documentElement.classList.add('failsafe'); }, 4000);
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Academy leader: plays once per session -->
+  <div class="leader" data-leader aria-hidden="true">
+    <div class="leader__half leader__half--top"></div>
+    <div class="leader__half leader__half--bottom"></div>
+    <div class="leader__stage" data-leader-stage>
+      <div class="leader__dial">
+        <div class="leader__sweep" data-leader-sweep></div>
+        <svg class="leader__rings" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="92" />
+          <circle cx="100" cy="100" r="76" />
+          <line x1="100" y1="0" x2="100" y2="200" />
+          <line x1="0" y1="100" x2="200" y2="100" />
+        </svg>
+        <span class="leader__num" data-leader-num>3</span>
+      </div>
+      <div class="leader__meta mono">
+        <span>Picture start</span>
+        <span>alfredcodes.icu</span>
+        <span>Click to skip</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Film grain + viewfinder HUD -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hud" aria-hidden="true">
+    <i class="hud__corner hud__corner--tl"></i>
+    <i class="hud__corner hud__corner--tr"></i>
+    <i class="hud__corner hud__corner--bl"></i>
+    <i class="hud__corner hud__corner--br"></i>
+  </div>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="#open" aria-label="Back to the top">
+      <span class="rec-dot"></span>
+      <span class="topbar__rec mono">REC</span>
+      <span class="topbar__name">alfred<em>codes</em></span>
+    </a>
+    <p class="topbar__scene mono" aria-hidden="true"><span data-scene-label>SC.01 · COLD OPEN</span></p>
+    <p class="topbar__tc mono" aria-hidden="true">
+      <span class="dim">TC</span> <span data-tc>00:00:00:00</span> <span class="dim topbar__fps">24 FPS</span>
+    </p>
+  </header>
+
+  <!-- Editing timeline: doubles as chapter navigation -->
+  <nav class="timeline" aria-label="Chapters">
+    <span class="timeline__label mono" aria-hidden="true">V1</span>
+    <div class="timeline__lane" data-lane>
+    <ol class="timeline__track" data-timeline>
+      <li><a href="#open" data-chapter="open"><span class="timeline__n">01</span><span class="timeline__t">Cold open</span></a></li>
+      <li><a href="#logline" data-chapter="logline"><span class="timeline__n">02</span><span class="timeline__t">Logline</span></a></li>
+      <li><a href="#now" data-chapter="now"><span class="timeline__n">03</span><span class="timeline__t">Now shooting</span></a></li>
+      <li><a href="#screening" data-chapter="screening"><span class="timeline__n">04</span><span class="timeline__t">Screening</span></a></li>
+      <li><a href="#reel" data-chapter="reel"><span class="timeline__n">05</span><span class="timeline__t">The reel</span></a></li>
+      <li><a href="#numbers" data-chapter="numbers"><span class="timeline__n">06</span><span class="timeline__t">Numbers</span></a></li>
+      <li><a href="#bsides" data-chapter="bsides"><span class="timeline__n">07</span><span class="timeline__t">B-sides</span></a></li>
+      <li><a href="#offcamera" data-chapter="offcamera"><span class="timeline__n">08</span><span class="timeline__t">Off camera</span></a></li>
+      <li><a href="#wrap" data-chapter="wrap"><span class="timeline__n">09</span><span class="timeline__t">Final cut</span></a></li>
+      <li><a href="#credits" data-chapter="credits"><span class="timeline__n">10</span><span class="timeline__t">Credits</span></a></li>
+    </ol>
+    <div class="timeline__playhead" data-playhead aria-hidden="true"><span class="mono" data-tc-mini>00:00</span></div>
+    </div>
+    <button class="timeline__pause mono" type="button" data-pause aria-pressed="false">
+      <span class="timeline__pause-icon" aria-hidden="true"></span><span class="timeline__pause-text" data-pause-text>Pause motion</span>
+    </button>
+  </nav>
+
+  <!-- Viewfinder cursor (fine pointers only) -->
+  <div class="cursor" data-cursor aria-hidden="true">
+    <div class="cursor__box" data-cursor-box><i></i><i></i><i></i><i></i></div>
+    <div class="cursor__dot" data-cursor-dot></div>
+    <span class="cursor__label mono" data-cursor-label></span>
+  </div>
+
+  <main id="main">
+
+    <!-- SC.01 — COLD OPEN -->
+    <section class="open" id="open" data-scene="SC.01 · COLD OPEN">
+      <canvas class="open__gl" data-hero-gl aria-hidden="true"></canvas>
+      <div class="open__fallback" aria-hidden="true"></div>
+      <div class="open__safe" aria-hidden="true"><i></i></div>
+
+      <div class="open__inner">
+        <p class="open__kicker mono" data-hero-fade>
+          <span>A reel by</span><span>Hanzhe Long</span><span>Bay Area, CA</span>
+        </p>
+        <h1 class="open__title" aria-label="Hanzhe “Alfred” Long" data-hero-title>
+          <span class="open__line open__line--1" data-stretch aria-hidden="true">Hanzhe</span>
+          <span class="open__line open__line--2 serif" aria-hidden="true"><span class="q">“</span>Alfred<span class="q">”</span></span>
+          <span class="open__line open__line--3" data-stretch aria-hidden="true">Long</span>
+        </h1>
+        <div class="open__foot">
+          <p class="open__logline" data-hero-fade>
+            I build the software behind AI that <em>directs</em>&nbsp;— agents, video, and the occasional trading&nbsp;bot.
+          </p>
+          <dl class="open__roles mono" data-hero-fade>
+            <div><dt>Now</dt><dd>Engineer, OpenArt</dd></div>
+            <div><dt>Before</dt><dd>Agents, Moveworks</dd></div>
+            <div><dt>Founded</dt><dd>Vizzy Labs</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <a class="open__cue mono" href="#logline" data-hero-fade>
+        <span>Scroll to roll</span>
+        <span class="open__perf" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </a>
+    </section>
+
+    <!-- SC.02 — LOGLINE -->
+    <section class="logline" id="logline" data-scene="SC.02 · LOGLINE">
+      <header class="slug" data-slug>
+        <span class="slug__sc mono">SC.02</span>
+        <h2 class="slug__title">Logline</h2>
+        <p class="slug__line mono" data-type>Fade in — Int. a desk in the Bay Area — Night</p>
+      </header>
+
+      <div class="logline__grid">
+        <p class="logline__text" data-words>
+          I’m Alfred — an engineer who lives where models meet real people. Right now I’m at <mark>OpenArt</mark>, democratizing art creation by turning a single conversation into a finished film. Before that I built work agents at <mark>Moveworks</mark>, co-founded a startup that searched TikTok like Google, and spent college backtesting my way through markets. These days I think about agent harnesses, evals, RL for planning and tool use, and agents that improve themselves.
+        </p>
+
+        <figure class="casting" data-casting>
+          <span class="casting__tape" aria-hidden="true"></span>
+          <div class="casting__photo">
+            <img src="https://avatars.githubusercontent.com/u/127585484?v=4" alt="Portrait of Hanzhe “Alfred” Long" width="460" height="460" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="casting__cap mono">
+            <span><b>Talent</b> H. Long</span>
+            <span><b>Role</b> Himself</span>
+            <span><b>Take</b> 26</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SC.03 — NOW SHOOTING -->
+    <section class="now" id="now" data-scene="SC.03 · NOW SHOOTING">
+      <header class="slug" data-slug>
+        <span class="slug__sc mono">SC.03</span>
+        <h2 class="slug__title">Now shooting</h2>
+        <p class="slug__line mono" data-type>Int. OpenArt, Redwood City — Day</p>
+      </header>
+
+      <div class="now__intro">
+        <p class="now__lead" data-reveal>
+          Making wonders at <a href="https://openart.ai" target="_blank" rel="noopener">OpenArt</a> since April 2026 — the creative AI platform that a16z’s Top 100 ranks <strong>#12</strong> among consumer gen-AI apps by monthly revenue, and one of five companies in the 2026 Disney Accelerator. I work across the video stack:
+        </p>
+        <p class="now__meta mono" data-reveal>Software Engineer<br>Apr 2026 → present</p>
+      </div>
+
+      <ol class="takes" data-takes>
+        <li class="take" data-take="director" tabindex="0">
+          <span class="take__n mono">T.01</span>
+          <span class="take__name">Director</span>
+          <span class="take__desc">Vibe-direct a film up to five minutes long, from one conversation.</span>
+        </li>
+        <li class="take" data-take="smartshot" tabindex="0">
+          <span class="take__n mono">T.02</span>
+          <span class="take__name">Smart Shot</span>
+          <span class="take__desc">One call renders a whole production sheet: shot list, lenses, camera moves, storyboard.</span>
+        </li>
+        <li class="take" data-take="music" tabindex="0">
+          <span class="take__n mono">T.03</span>
+          <span class="take__name">Music Video</span>
+          <span class="take__desc">Hand it a track, get back a music video cut to the beat.</span>
+        </li>
+        <li class="take" data-take="lyric" tabindex="0">
+          <span class="take__n mono">T.04</span>
+          <span class="take__name">Lyric Video</span>
+          <span class="take__desc">Upload a song, choose the look, decide how every word should move.</span>
+        </li>
+        <li class="take" data-take="viral" tabindex="0">
+          <span class="take__n mono">T.05</span>
+          <span class="take__name">Viral Presets</span>
+          <span class="take__desc">Short-form formats that already work, ready to remix with your own shots.</span>
+        </li>
+        <li class="take" data-take="vfx" tabindex="0">
+          <span class="take__n mono">T.06</span>
+          <span class="take__name">VFX</span>
+          <span class="take__desc">Effects that used to need a compositor and a weekend.</span>
+        </li>
+        <li class="take" data-take="visualizer" tabindex="0">
+          <span class="take__n mono">T.07</span>
+          <span class="take__name">Visualizer</span>
+          <span class="take__desc">Audio-reactive visuals that move with every track.</span>
+        </li>
+        <li class="take" data-take="models" tabindex="0">
+          <span class="take__n mono">T.08</span>
+          <span class="take__name">Models</span>
+          <span class="take__desc">Model integrations: Seedance, GPT Image 2, Nano Banana Pro, Flux and friends, wired in.</span>
+        </li>
+      </ol>
+
+      <!-- Floating monitor that follows the cursor over the takes -->
+      <div class="monitor" data-monitor aria-hidden="true">
+        <div class="monitor__screen">
+          <div class="pv pv--director" data-pv="director">
+            <div class="clap">
+              <div class="clap__arm"></div>
+              <div class="clap__board mono"><span>Scene <b>01</b></span><span>Take <b>01</b></span><span>Dir. <b>you</b></span></div>
+            </div>
+          </div>
+          <div class="pv pv--smartshot" data-pv="smartshot">
+            <div class="sb mono"><i>Wide · 24</i><i>Med · 35</i><i>CU · 85</i><i>OTS · 50</i><i>Insert</i><i>Crane ↑</i></div>
+          </div>
+          <div class="pv pv--music" data-pv="music">
+            <div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="pv pv--lyric" data-pv="lyric">
+            <div class="ly"><span>Your song.</span><span>Your lyrics.</span><span><em>Your video.</em></span></div>
+          </div>
+          <div class="pv pv--viral" data-pv="viral">
+            <div class="phone"><div class="phone__feed"><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="pv pv--vfx" data-pv="vfx">
+            <div class="burst"><i></i><i></i><i></i><b></b></div>
+          </div>
+          <div class="pv pv--visualizer" data-pv="visualizer">
+            <div class="viz"><div class="viz__ring"></div><div class="viz__ring viz__ring--2"></div><div class="viz__core"></div></div>
+          </div>
+          <div class="pv pv--models" data-pv="models">
+            <svg class="graph" viewBox="0 0 320 180">
+              <path d="M160 90 L60 40 M160 90 L64 140 M160 90 L262 38 M160 90 L258 142" />
+              <path class="graph__pulse" d="M60 40 L160 90 M64 140 L160 90 M262 38 L160 90 M258 142 L160 90" />
+              <circle cx="160" cy="90" r="9" class="graph__hub" />
+              <circle cx="60" cy="40" r="4" /><circle cx="64" cy="140" r="4" /><circle cx="262" cy="38" r="4" /><circle cx="258" cy="142" r="4" />
+              <text x="60" y="26">seedance</text><text x="64" y="162">gpt-image-2</text><text x="262" y="24">nano-banana</text><text x="258" y="164">flux</text>
+            </svg>
+          </div>
+        </div>
+        <div class="monitor__bar mono"><span data-monitor-label>Director</span><span class="monitor__rec">● REC</span></div>
+      </div>
+    </section>
+
+
+    <!-- SC.04 — SCREENING ROOM -->
+    <section class="screening" id="screening" data-scene="SC.04 · SCREENING ROOM">
+      <header class="slug" data-slug>
+        <span class="slug__sc mono">SC.04</span>
+        <h2 class="slug__title">Screening room</h2>
+        <p class="slug__line mono" data-type>Int. a dark room — the projector is running</p>
+      </header>
+
+      <div class="screening__intro">
+        <p class="screening__lead" data-reveal>Things I’ve directed with the tools I build: music videos, ads and lyric videos made end to end with OpenArt, Hypit and HyperFrames. Everything loops silently; click a screen for sound.</p>
+        <p class="screening__meta mono" data-reveal>9 reels · 9:16 &amp; 2.39:1<br>Generated, cut and graded by me</p>
+      </div>
+
+      <figure class="feature" data-reveal>
+        <button class="feature__screen" type="button" data-play="wrapper" data-title="Started From the Wrapper" data-kicker="Lyric video · 1:49" data-cursor-text="Play ▶" aria-label="Play Started From the Wrapper">
+          <video muted loop playsinline preload="none" poster="assets/media/wrapper.jpg" data-loop="assets/media/wrapper-loop.mp4"></video>
+          <span class="feature__bars" aria-hidden="true"></span>
+          <span class="feature__play mono"><i aria-hidden="true"></i>Play with sound</span>
+          <span class="feature__rating mono" aria-hidden="true">Feature presentation</span>
+        </button>
+        <figcaption class="feature__cap">
+          <p class="mono">Lyric video · 1:49 · Rap parody</p>
+          <h3 class="feature__title">Started From <em>the Wrapper</em></h3>
+          <p class="feature__desc">An SF-startup rap parody with me as the founder who started from a GPT wrapper. Built three ways — HyperFrames, Hypit, and finally a from-scratch Python renderer — and the raw one won.</p>
+        </figcaption>
+      </figure>
+
+      <p class="dailies__label mono" data-reveal>Dailies — vertical</p>
+      <ul class="dailies dailies--tall-row">
+          <li class="daily daily--tall" data-reveal>
+            <button class="daily__screen" type="button" data-play="cant-wait-2028" data-title="Can’t Wait Till 2028" data-kicker="Topical ad · 0:32" data-cursor-text="Play ▶" aria-label="Play Can’t Wait Till 2028">
+              <video muted loop playsinline preload="none" poster="assets/media/cant-wait-2028.jpg" data-loop="assets/media/cant-wait-2028-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play with sound</span>
+              <span class="daily__tc mono" aria-hidden="true">0:32</span>
+            </button>
+            <p class="daily__kind mono">Topical ad</p>
+            <h3 class="daily__title">Can’t Wait Till 2028</h3>
+            <p class="daily__desc">The flying Roadster ships in 2028. I sing upside down in a magenta roadster, hop the traffic jam, and land a music video today.</p>
+          </li>
+          <li class="daily daily--tall" data-reveal>
+            <button class="daily__screen" type="button" data-play="same-song" data-title="Same Song" data-kicker="Ad · 0:52" data-cursor-text="Play ▶" aria-label="Play Same Song">
+              <video muted loop playsinline preload="none" poster="assets/media/same-song.jpg" data-loop="assets/media/same-song-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play with sound</span>
+              <span class="daily__tc mono" aria-hidden="true">0:52</span>
+            </button>
+            <p class="daily__kind mono">Ad</p>
+            <h3 class="daily__title">Same Song</h3>
+            <p class="daily__desc">Raw take on top, finished edit below: the same song goes from bedroom demo to music video.</p>
+          </li>
+          <li class="daily daily--tall" data-reveal>
+            <button class="daily__screen" type="button" data-play="four-days" data-title="Four Days" data-kicker="Ad · 0:36" data-cursor-text="Play ▶" aria-label="Play Four Days">
+              <video muted loop playsinline preload="none" poster="assets/media/four-days.jpg" data-loop="assets/media/four-days-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play with sound</span>
+              <span class="daily__tc mono" aria-hidden="true">0:36</span>
+            </button>
+            <p class="daily__kind mono">Ad</p>
+            <h3 class="daily__title">Four Days</h3>
+            <p class="daily__desc">A creator’s week, day by day: a notebook song becomes a finished Music Video by day four.</p>
+          </li>
+          <li class="daily daily--tall" data-reveal>
+            <button class="daily__screen" type="button" data-play="one-agent" data-title="One Agent" data-kicker="Ad · 0:53" data-cursor-text="Play ▶" aria-label="Play One Agent">
+              <video muted loop playsinline preload="none" poster="assets/media/one-agent.jpg" data-loop="assets/media/one-agent-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play with sound</span>
+              <span class="daily__tc mono" aria-hidden="true">0:53</span>
+            </button>
+            <p class="daily__kind mono">Ad</p>
+            <h3 class="daily__title">One Agent</h3>
+            <p class="daily__desc">Talking head plus motion graphics: one agent replaces the app tangle, from song in to final cut.</p>
+          </li>
+      </ul>
+
+      <p class="dailies__label mono" data-reveal>Dailies — widescreen</p>
+      <ul class="dailies dailies--wide-row">
+          <li class="daily daily--wide" data-reveal>
+            <button class="daily__screen" type="button" data-play="midnight-sun" data-silent data-title="Midnight Sun" data-kicker="Spec music video · 3:00" data-cursor-text="Play ▶" aria-label="Play Midnight Sun">
+              <video muted loop playsinline preload="none" poster="assets/media/midnight-sun.jpg" data-loop="assets/media/midnight-sun-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play (picture only)</span>
+              <span class="daily__tc mono" aria-hidden="true">3:00</span>
+            </button>
+            <p class="daily__kind mono">Spec music video</p>
+            <h3 class="daily__title">Midnight Sun</h3>
+            <p class="daily__desc">A road trip under a sun that never sets: the title painted on the tarmac, a laundromat chorus, an eye that holds the sun. Built shot by shot from generated video.<span class="daily__note"> Shown picture only: the track isn’t mine to publish.</span></p>
+          </li>
+          <li class="daily daily--wide" data-reveal>
+            <button class="daily__screen" type="button" data-play="kpop" data-title="K-pop MV test" data-kicker="Model test · 0:30" data-cursor-text="Play ▶" aria-label="Play K-pop MV test">
+              <video muted loop playsinline preload="none" poster="assets/media/kpop.jpg" data-loop="assets/media/kpop-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play with sound</span>
+              <span class="daily__tc mono" aria-hidden="true">0:30</span>
+            </button>
+            <p class="daily__kind mono">Model test</p>
+            <h3 class="daily__title">K-pop MV test</h3>
+            <p class="daily__desc">Cobalt coats and chrome spheres: an original five-section K-pop video, generated end to end with MiniMax H3 Max.</p>
+          </li>
+          <li class="daily daily--wide" data-reveal>
+            <button class="daily__screen" type="button" data-play="kestrel" data-title="One Clumsy Day" data-kicker="Ad pipeline PoC · 0:55" data-cursor-text="Play ▶" aria-label="Play One Clumsy Day">
+              <video muted loop playsinline preload="none" poster="assets/media/kestrel.jpg" data-loop="assets/media/kestrel-loop.mp4"></video>
+              <span class="daily__chip mono"><i aria-hidden="true"></i>Play with sound</span>
+              <span class="daily__tc mono" aria-hidden="true">0:55</span>
+            </button>
+            <p class="daily__kind mono">Ad pipeline PoC</p>
+            <h3 class="daily__title">One Clumsy Day</h3>
+            <p class="daily__desc">One product brief run through a nine-stage ad pipeline: research, script, assets, storyboard, clips, assembly, QA.</p>
+          </li>
+      </ul>
+
+      <div class="vfx" data-reveal>
+        <div class="vfx__head">
+          <p class="dailies__label mono">VFX — before / after</p>
+          <h3 class="vfx__title">Drag the <em>cut</em></h3>
+          <p class="vfx__desc">From OpenArt’s VFX launch: matte the subject, swap the world, redress the wardrobe, keep the shot. Drag across the frame, or use the arrow keys.</p>
+          <button class="btn vfx__play" type="button" data-play="vfx-demo" data-title="VFX — launch demo" data-kicker="VFX · 0:06" data-silent-ok data-magnetic>▶ Watch the transform</button>
+        </div>
+        <div class="compare" data-compare>
+          <img class="compare__img" src="assets/media/vfx-after.jpg" alt="After: the same woman in a sci-fi suit on a hover platform, with a spaceship and alien canyon behind her" width="936" height="624" loading="lazy" decoding="async">
+          <div class="compare__before" aria-hidden="true">
+            <img class="compare__img" src="assets/media/vfx-stage-3.jpg" alt="" data-compare-before width="936" height="624" loading="lazy" decoding="async">
+          </div>
+          <span class="compare__tag compare__tag--before mono" aria-hidden="true" data-compare-tag>Before · Plate swap</span>
+          <span class="compare__tag compare__tag--after mono" aria-hidden="true">After · final</span>
+          <span class="compare__handle" aria-hidden="true"><i>◀</i><i>▶</i></span>
+          <input class="compare__range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Reveal before or after" data-compare-range>
+        </div>
+        <ol class="breakdown mono" aria-label="VFX breakdown, pick a stage to compare">
+          <li><button type="button" class="" data-stage="assets/media/vfx-stage-1.jpg" data-stage-label="Source" aria-label="Compare Source against the final frame"><img src="assets/media/vfx-stage-1.jpg" alt="" loading="lazy" width="936" height="624"><span>01 Source</span></button></li>
+          <li><button type="button" class="" data-stage="assets/media/vfx-stage-2.jpg" data-stage-label="Matte" aria-label="Compare Matte against the final frame"><img src="assets/media/vfx-stage-2.jpg" alt="" loading="lazy" width="936" height="624"><span>02 Matte</span></button></li>
+          <li><button type="button" class="is-active" data-stage="assets/media/vfx-stage-3.jpg" data-stage-label="Plate swap" aria-label="Compare Plate swap against the final frame"><img src="assets/media/vfx-stage-3.jpg" alt="" loading="lazy" width="936" height="624"><span>03 Plate swap</span></button></li>
+          <li><button type="button" class="" data-stage="assets/media/vfx-stage-4.jpg" data-stage-label="New world" aria-label="Compare New world against the final frame"><img src="assets/media/vfx-stage-4.jpg" alt="" loading="lazy" width="936" height="624"><span>04 New world</span></button></li>
+          <li><button type="button" class="" data-stage="assets/media/vfx-stage-5.jpg" data-stage-label="Final" aria-label="Compare Final against the final frame"><img src="assets/media/vfx-stage-5.jpg" alt="" loading="lazy" width="936" height="624"><span>05 Wardrobe · final</span></button></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SC.05 — THE REEL -->
+    <section class="reel" id="reel" data-scene="SC.05 · THE REEL">
+      <div class="reel__pin" data-reel-pin>
+        <header class="slug slug--reel" data-slug>
+          <span class="slug__sc mono">SC.05</span>
+          <h2 class="slug__title">The reel</h2>
+          <p class="slug__line mono"><span data-type>2021 → now, one frame per chapter</span> <span class="reel__count" aria-hidden="true">Frame <b data-reel-count>01</b> / 07</span></p>
+        </header>
+
+        <div class="strip" data-strip>
+          <div class="strip__track" data-strip-track>
+            <ol class="strip__frames">
+              <li class="frame" data-frame style="--a:#ff8a3d;--b:#3b1206">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year">’21</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Ext. Shenzhen — Summer 2021</p>
+                  <h3 class="frame__role">Quant research intern</h3>
+                  <p class="frame__org">Bopu Asset <span>&amp;</span> 宝盈基金</p>
+                  <p class="frame__copy">Dug through terabytes of Level-10 and tick data for high-frequency alpha: 15+ factors with IC above 0.05, and a backtester I made 20× faster.</p>
+                  <p class="frame__stat mono"><b>Sharpe 2.0</b> · 30% in three months</p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 01</span>
+              </li>
+              <li class="frame" data-frame style="--a:#5fb3ff;--b:#06162b">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year frame__year--range">’21–22</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Ext. Berkeley — 2021–22</p>
+                  <h3 class="frame__role">Exchange year, Statistics &amp; CS</h3>
+                  <p class="frame__org">UC Berkeley</p>
+                  <p class="frame__copy">A year of deep learning — image captioning with RNNs and LSTMs, style transfer, transformers — and a first taste of the Bay.</p>
+                  <p class="frame__stat mono"><b>First</b> neural nets, first Bay Area winter</p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 02</span>
+              </li>
+              <li class="frame" data-frame style="--a:#e8372a;--b:#2a0705">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year frame__year--range">’22–24</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Int. Madison — 2022–24</p>
+                  <h3 class="frame__role">B.S. Computer Science, trading club president</h3>
+                  <p class="frame__org">UW–Madison <span>·</span> Cardinal Trading Group</p>
+                  <p class="frame__copy">Wrote an operating system’s worth of C, and ran the trading club — now Traders at Wisconsin — where our news-sentiment strategy backtested at 30% a year.</p>
+                  <p class="frame__stat mono"><b>30% / yr</b> sentiment backtest</p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 03</span>
+              </li>
+              <li class="frame" data-frame style="--a:#ffd166;--b:#1f1702">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year">’23</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Int. Expedia, Seattle — Summer 2023</p>
+                  <h3 class="frame__role">Software engineer intern</h3>
+                  <p class="frame__org">Expedia Group</p>
+                  <p class="frame__copy">Built a real-time authoring and preview tool for the cards on the Vrbo homepage — React, GraphQL, TypeScript, MongoDB.</p>
+                  <p class="frame__stat mono"><b>400K+</b> views · 11.25% CTR</p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 04</span>
+              </li>
+              <li class="frame" data-frame style="--a:#b6ff5c;--b:#0f1a02">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year">’24</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Int. Mountain View — 2024</p>
+                  <h3 class="frame__role">Co-founder</h3>
+                  <p class="frame__org">Vizzy Labs</p>
+                  <p class="frame__copy">Building Google for TikTok: video search, VLMs, vision RAG, and the ML infra underneath it.</p>
+                  <p class="frame__stat mono"><b>$2M</b> pre-seed</p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 05</span>
+              </li>
+              <li class="frame" data-frame style="--a:#8f7bff;--b:#0e0a2b">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year frame__year--range">’24–26</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Int. Moveworks, Bay Area — 2024–26</p>
+                  <h3 class="frame__role">Software engineer, Agent Core</h3>
+                  <p class="frame__org">Moveworks</p>
+                  <p class="frame__copy">Interned on Broca in 2024, came back to build work agents for every employee: QuickGPT, evals, CodeAct, structured data analysis, data-viz artifacts, web search.</p>
+                  <p class="frame__stat mono"><b>$2.85B</b> · acquired by ServiceNow</p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 06</span>
+              </li>
+              <li class="frame frame--now" data-frame style="--a:#ff4122;--b:#1a0603">
+                <div class="frame__img"><div class="frame__plate" data-plate><span class="frame__year">Now</span></div></div>
+                <div class="frame__body">
+                  <p class="frame__slug mono">Int. OpenArt, Redwood City — Now</p>
+                  <h3 class="frame__role">Software engineer</h3>
+                  <p class="frame__org">OpenArt</p>
+                  <p class="frame__copy">Music Video, Smart Shot, Director, Lyric Video, Viral Presets, VFX, Visualizer and model integrations.</p>
+                  <p class="frame__stat mono"><b>● Now playing</b></p>
+                </div>
+                <span class="frame__edge mono" aria-hidden="true">AL 5221 ▸ 07</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p class="reel__hint mono" aria-hidden="true">Swipe the strip →</p>
+      </div>
+    </section>
+
+    <!-- SC.06 — BY THE NUMBERS -->
+    <section class="numbers" id="numbers" data-scene="SC.06 · BY THE NUMBERS">
+      <header class="slug" data-slug>
+        <span class="slug__sc mono">SC.06</span>
+        <h2 class="slug__title">By the numbers</h2>
+        <p class="slug__line mono" data-type>Insert — a ticker tape, rolling</p>
+      </header>
+
+      <ul class="stats">
+        <li class="stat stat--xl" data-reveal>
+          <span class="stat__value" data-odo>$2.85B</span>
+          <span class="stat__label">ServiceNow’s acquisition of Moveworks, where I built agents.</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__value" data-odo>#12</span>
+          <span class="stat__label">OpenArt in a16z’s Top 100 Gen AI consumer apps, by monthly revenue.</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__value" data-odo>$2M</span>
+          <span class="stat__label">Pre-seed raised for Vizzy Labs.</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__value" data-odo>2.0</span>
+          <span class="stat__label">Sharpe ratio on my first quant strategy.</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__value" data-odo>441</span>
+          <span class="stat__label">LeetCode problems solved, back when that was the job.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SC.07 — B-SIDES -->
+    <section class="bsides" id="bsides" data-scene="SC.07 · B-SIDES">
+      <header class="slug" data-slug>
+        <span class="slug__sc mono">SC.07</span>
+        <h2 class="slug__title">B-sides</h2>
+        <p class="slug__line mono" data-type>Contact sheet — hackathons, side projects, coursework</p>
+      </header>
+
+      <ul class="sheet">
+        <li class="shot shot--select" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/viral-lab-codex-hackathon" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--viral" aria-hidden="true"><i></i><i></i><i></i></div>
+            <p class="shot__meta mono"><span>14A</span><span>2026</span></p>
+            <h3 class="shot__title">Viral Lab</h3>
+            <p class="shot__desc">Codex Hackathon: scores a viral short’s “DNA”, convenes an agent committee, and writes a five-shot remix brief with a playable preview.</p>
+            <p class="shot__tags mono">TypeScript · Agents</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+            <span class="shot__stamp mono" aria-hidden="true">Select</span>
+          </a>
+          <p class="shot__links mono"><a href="https://github.com/Alfr3doK1ng/viral-lab-codex-hackathon" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/TokGen" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--wave" aria-hidden="true"><i></i></div>
+            <p class="shot__meta mono"><span>14B</span><span>2024</span><span>★ 7</span></p>
+            <h3 class="shot__title">TokGen</h3>
+            <p class="shot__desc">Video understanding before the VLM era (very hardcore): trend-driven TikTok scripts from Whisper, Gemini and LlamaIndex fusion retrieval.</p>
+            <p class="shot__tags mono">Python · RAG</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+          <p class="shot__links mono"><a href="https://devpost.com/software/tokgen" target="_blank" rel="noopener">Devpost ↗</a> <a href="https://github.com/Alfr3doK1ng/TokGen" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/NewsGPT" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--news" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <p class="shot__meta mono"><span>15A</span><span>2024</span><span>★ 6</span></p>
+            <h3 class="shot__title">NewsGPT</h3>
+            <p class="shot__desc">Q&amp;A over the latest headlines: news streams through Kafka into Pinecone, answered with LangChain and ChatGPT.</p>
+            <p class="shot__tags mono">Python · Kafka</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/ToolsGuru_PICA" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--tools" aria-hidden="true"><i></i><i></i><i></i></div>
+            <p class="shot__meta mono"><span>15B</span><span>2025</span></p>
+            <h3 class="shot__title">ToolsGuru</h3>
+            <p class="shot__desc">ElevenLabs × a16z hackathon, SF: generates APIs on the fly for your agent, deploys them, then uses them on your next message.</p>
+            <p class="shot__tags mono">TypeScript · Agents</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+          <p class="shot__links mono"><a href="https://devpost.com/software/toolsguru" target="_blank" rel="noopener">Devpost ↗</a> <a href="https://github.com/Alfr3doK1ng/ToolsGuru_PICA" target="_blank" rel="noopener">GitHub ↗</a></p>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/congress-tracker" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--candles" aria-hidden="true"><i></i></div>
+            <p class="shot__meta mono"><span>16A</span><span>2024</span></p>
+            <h3 class="shot__title">Congress Tracker</h3>
+            <p class="shot__desc">Follow-the-congress trading signals, paper-traded with Cardinal Trading Group.</p>
+            <p class="shot__tags mono">Python · Quant</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/Agent-R1" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--scatter" aria-hidden="true"><i></i></div>
+            <p class="shot__meta mono"><span>16B</span><span>2025</span></p>
+            <h3 class="shot__title">Agent-R1 RFT</h3>
+            <p class="shot__desc">Reinforcement fine-tuned DeepSeek-R1-Distill-Qwen-1.5B on GSM8K with Python-sandbox and Wolfram Alpha tools: better planning, multi-turn play and tool calls.</p>
+            <p class="shot__tags mono">RL · Tool use</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/CS537-Fall-23" target="_blank" rel="noopener" data-cursor-text="Open ↗">
+            <div class="shot__thumb th th--term" aria-hidden="true"><code>$ ./wsh<br>wsh&gt; mlfq --boost<br>wsh&gt; mount -t lfs<span>▋</span></code></div>
+            <p class="shot__meta mono"><span>17A</span><span>2023</span></p>
+            <h3 class="shot__title">xv6 &amp; friends</h3>
+            <p class="shot__desc">CS537: a Unix shell, an MLFQ scheduler, a multithreaded HTTP proxy and a log-structured FUSE file system, all in C.</p>
+            <p class="shot__tags mono">C · Systems</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+        </li>
+        <li class="shot" data-reveal>
+          <a href="https://github.com/Alfr3doK1ng/Alfr3doK1ng.github.io" target="_blank" rel="noopener" data-cursor-text="Source ↗">
+            <div class="shot__thumb th th--self" aria-hidden="true"><i></i><i></i><i></i><i></i><b>● REC</b></div>
+            <p class="shot__meta mono"><span>17B</span><span>2026</span></p>
+            <h3 class="shot__title">This site</h3>
+            <p class="shot__desc">The director’s cut of alfredcodes.icu: raw WebGL, GSAP and Lenis, no framework, no build step.</p>
+            <p class="shot__tags mono">WebGL · Motion</p>
+            <svg class="shot__mark" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 36 C120 6 238 10 276 52 C306 92 280 168 196 186 C112 202 22 176 14 116 C8 72 52 42 118 26 C150 18 190 20 214 30" /></svg>
+          </a>
+        </li>
+      </ul>
+
+      <div class="print">
+        <p class="print__label mono" data-reveal>In print — co-authored papers</p>
+        <ol class="print__list">
+          <li class="paper" data-reveal>
+            <a href="https://arxiv.org/abs/2603.03378" target="_blank" rel="noopener" data-cursor-text="Read ↗">
+              <span class="paper__year mono">2026</span>
+              <span class="paper__title"><b>AOI</b>: Turning Failed Trajectories into Training Signals for Autonomous Cloud Diagnosis</span>
+              <span class="paper__note">A trainable multi-agent SRE framework with GRPO and a failure-trajectory evolver: 66.3% best@5 on AIOpsLab, vs. 41.9% for the prior state of the art.</span>
+              <span class="paper__venue mono">arXiv 2603.03378 ↗</span>
+            </a>
+          </li>
+          <li class="paper" data-reveal>
+            <a href="https://arxiv.org/abs/2508.05387" target="_blank" rel="noopener" data-cursor-text="Read ↗">
+              <span class="paper__year mono">2025</span>
+              <span class="paper__title"><b>Echo</b>: Decoupling Inference and Training for Large-Scale RL Alignment on Heterogeneous Swarms</span>
+              <span class="paper__note">Decentralized async RL: rollouts on commodity edge “inference swarms”, training elsewhere, matching a co-located Verl baseline.</span>
+              <span class="paper__venue mono">arXiv 2508.05387 ↗</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Off camera marquee -->
+    <div class="marquee" aria-label="Off camera interests" data-marquee>
+      <div class="marquee__row" data-marquee-row>
+        <span class="marquee__item">Off camera</span><span class="marquee__star" aria-hidden="true">✳</span>
+        <span class="marquee__item serif">self-improving agents</span><span class="marquee__star" aria-hidden="true">✳</span>
+        <span class="marquee__item">backtesting &amp; paper trading</span><span class="marquee__star" aria-hidden="true">✳</span>
+        <span class="marquee__item serif">reading papers</span><span class="marquee__star" aria-hidden="true">✳</span>
+        <span class="marquee__item">hackathons</span><span class="marquee__star" aria-hidden="true">✳</span>
+        <span class="marquee__item serif">competitive programming</span><span class="marquee__star" aria-hidden="true">✳</span>
+        <span class="marquee__item">Counter-Strike, FACEIT lvl 8</span><span class="marquee__star" aria-hidden="true">✳</span>
+      </div>
+    </div>
+
+    <!-- SC.08 — OFF CAMERA -->
+    <section class="offcam" id="offcamera" data-scene="SC.08 · OFF CAMERA">
+      <header class="slug" data-slug>
+        <span class="slug__sc mono">SC.08</span>
+        <h2 class="slug__title">Off camera</h2>
+        <p class="slug__line mono" data-type>Ext. real life — various locations</p>
+      </header>
+      <div class="offcam__intro">
+        <p class="offcam__lead" data-reveal>Behind the scenes: office skits, late nights in the city, and the occasional Waldo. Toss the prints around — they’re draggable.</p>
+        <a class="btn" href="https://www.instagram.com/_alfredoking/" target="_blank" rel="noopener" data-magnetic data-reveal>More on Instagram ↗</a>
+      </div>
+      <ul class="polaroids" data-polaroids>
+        <li class="polaroid" style="--r:-5deg;--x:2%;--y:6%" data-polaroid>
+          <a href="https://www.instagram.com/p/DXp2EklCs54/" target="_blank" rel="noopener" data-cursor-text="Instagram ↗" draggable="false">
+            <img src="assets/img/life/smart-shot-framing.jpg" alt="Framing the shot for the Smart Shot launch" width="640" height="640" loading="lazy" decoding="async" draggable="false">
+            <span class="polaroid__cap"><b>Framing the shot for the Smart Shot launch</b><span class="mono">Apr 2026</span></span>
+          </a>
+        </li>
+        <li class="polaroid" style="--r:4deg;--x:24%;--y:0%" data-polaroid>
+          <a href="https://www.instagram.com/p/DW-3nFAFR3V/" target="_blank" rel="noopener" data-cursor-text="Instagram ↗" draggable="false">
+            <img src="assets/img/life/sf-night-desk.jpg" alt="Night shift, San Francisco" width="480" height="640" loading="lazy" decoding="async" draggable="false">
+            <span class="polaroid__cap"><b>Night shift, San Francisco</b><span class="mono">Apr 2026</span></span>
+          </a>
+        </li>
+        <li class="polaroid" style="--r:-3deg;--x:46%;--y:8%" data-polaroid>
+          <a href="https://www.instagram.com/p/DXtYjZyCv5l/" target="_blank" rel="noopener" data-cursor-text="Instagram ↗" draggable="false">
+            <img src="assets/img/life/new-hire-skit.jpg" alt="“POV: the new hire is a bad culture fit”" width="361" height="640" loading="lazy" decoding="async" draggable="false">
+            <span class="polaroid__cap"><b>“POV: the new hire is a bad culture fit”</b><span class="mono">Apr 2026</span></span>
+          </a>
+        </li>
+        <li class="polaroid" style="--r:6deg;--x:64%;--y:2%" data-polaroid>
+          <a href="https://www.instagram.com/p/C3d2kSILVke/" target="_blank" rel="noopener" data-cursor-text="Instagram ↗" draggable="false">
+            <img src="assets/img/life/wheres-waldo.jpg" alt="Found him" width="360" height="640" loading="lazy" decoding="async" draggable="false">
+            <span class="polaroid__cap"><b>Found him</b><span class="mono">Feb 2024</span></span>
+          </a>
+        </li>
+        <li class="polaroid" style="--r:-6deg;--x:80%;--y:10%" data-polaroid>
+          <a href="https://www.instagram.com/p/CvSfkdiLgkS/" target="_blank" rel="noopener" data-cursor-text="Instagram ↗" draggable="false">
+            <img src="assets/img/life/observation-deck.jpg" alt="Up high, summer ’23" width="512" height="640" loading="lazy" decoding="async" draggable="false">
+            <span class="polaroid__cap"><b>Up high, summer ’23</b><span class="mono">Jul 2023</span></span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SC.09 — FINAL CUT -->
+    <section class="wrap" id="wrap" data-scene="SC.09 · FINAL CUT">
+      <p class="wrap__slug mono" data-type>SC.09 — Ext. wherever you are — Now</p>
+      <h2 class="wrap__title" data-wrap-title>
+        <span class="wrap__w">Cut.</span>
+        <span class="wrap__w serif">Print.</span>
+        <span class="wrap__w wrap__w--last">Let’s talk.</span>
+      </h2>
+      <p class="wrap__copy" data-reveal>Building something in AI video, agents, or markets? I’m always up for a good story.</p>
+      <div class="wrap__actions" data-reveal>
+        <a class="btn btn--rec" href="https://www.linkedin.com/in/alfred-long/" target="_blank" rel="noopener" data-magnetic data-cursor-text="Action!">
+          <span class="btn__dot" aria-hidden="true"></span><span>Say hi on LinkedIn</span>
+        </a>
+        <a class="btn" href="https://github.com/Alfr3doK1ng" target="_blank" rel="noopener" data-magnetic>GitHub</a>
+        <a class="btn" href="https://www.instagram.com/_alfredoking/" target="_blank" rel="noopener" data-magnetic>Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- SC.10 — END CREDITS -->
+  <footer class="credits" id="credits" data-scene="SC.10 · END CREDITS">
+    <div class="credits__viewport" data-credits-viewport>
+      <div class="credits__roll" data-credits-roll>
+        <p class="credits__logo">alfred<em>codes</em></p>
+        <dl class="credits__list">
+          <div><dt>Directed by</dt><dd>Hanzhe “Alfred” Long</dd></div>
+          <div><dt>Written by</dt><dd>Hanzhe Long</dd></div>
+          <div><dt>Engineering</dt><dd>Also Hanzhe Long</dd></div>
+          <div><dt>Motion</dt><dd>GSAP · Lenis · raw WebGL</dd></div>
+          <div><dt>Typography</dt><dd>Archivo · Instrument Serif · JetBrains Mono</dd></div>
+          <div><dt>Filmed on location</dt><dd>Shenzhen · Berkeley · Madison · Seattle<br>Mountain View · San Francisco · Redwood City</dd></div>
+          <div><dt>With thanks to</dt><dd>OpenArt · Moveworks · Vizzy Labs<br>Traders at Wisconsin · UW–Madison · UC Berkeley</dd></div>
+          <div><dt>Catering</dt><dd>441 LeetCode problems</dd></div>
+          <div><dt>Stunt coordination</dt><dd>Counter-Strike, FACEIT level 8</dd></div>
+        </dl>
+        <p class="credits__note mono">No frames were dropped in the making of this website.</p>
+      </div>
+      <div class="credits__end" data-credits-end>
+        <p class="credits__the-end serif">The End</p>
+        <button class="rewind mono" type="button" data-rewind data-magnetic data-cursor-text="Rewind">◀◀ Rewind</button>
+        <p class="credits__legal mono">© 2026 Hanzhe Long · alfredcodes.icu</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theater: full-screen playback with sound -->
+  <div class="theater" data-theater role="dialog" aria-modal="true" aria-labelledby="theater-title" hidden>
+    <div class="theater__house" data-theater-house></div>
+    <div class="theater__stage" data-theater-stage>
+      <video class="theater__video" data-theater-video controls playsinline preload="auto"></video>
+    </div>
+    <div class="theater__meta">
+      <p class="mono" data-theater-kicker></p>
+      <h2 class="theater__title" id="theater-title" data-theater-title></h2>
+    </div>
+    <div class="theater__nav mono">
+      <button type="button" data-theater-prev aria-label="Previous reel">◀◀ Prev</button>
+      <button type="button" data-theater-next aria-label="Next reel">Next ▶▶</button>
+      <button type="button" class="theater__close" data-theater-close aria-label="Close player">✕ Close</button>
+    </div>
+  </div>
+
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/SplitText.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
